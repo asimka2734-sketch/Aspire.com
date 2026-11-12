@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student &amp; Admin Portal | Aspire College Taunsa</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb3b1",
+            "inverse-surface": "#263143",
+            "tertiary-fixed-dim": "#f0bf64",
+            "surface-container-low": "#f0f3ff",
+            "on-error": "#ffffff",
+            "surface-variant": "#d8e3fb",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#d8e3fb",
+            "tertiary-container": "#775500",
+            "inverse-on-surface": "#ecf1ff",
+            "error": "#ba1a1a",
+            "outline": "#8f6f6e",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#c5dcfd",
+            "on-surface-variant": "#5b403f",
+            "surface-container": "#e7eeff",
+            "background": "#f9f9ff",
+            "secondary": "#4a607c",
+            "primary-container": "#b5122a",
+            "surface-bright": "#f9f9ff",
+            "on-secondary-container": "#4b607d",
+            "secondary-fixed-dim": "#b2c8e9",
+            "on-surface": "#111c2d",
+            "primary": "#8c001b",
+            "on-primary-fixed": "#410007",
+            "primary-fixed-dim": "#ffb3b1",
+            "tertiary": "#593f00",
+            "on-tertiary-container": "#fdcc6f",
+            "on-secondary-fixed": "#031c36",
+            "secondary-fixed": "#d3e4ff",
+            "surface-container-high": "#dee8ff",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#ffc5c3",
+            "surface-dim": "#cfdaf2",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#92001d",
+            "surface": "#f9f9ff",
+            "on-background": "#111c2d",
+            "on-secondary-fixed-variant": "#334863",
+            "tertiary-fixed": "#ffdea6",
+            "primary-fixed": "#ffdad8",
+            "on-tertiary-fixed": "#271900",
+            "outline-variant": "#e3bebc",
+            "on-tertiary-fixed-variant": "#5e4200",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#ba172d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "margin": "3rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "title-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "display-md": ["Playfair Display"],
+            "display-md-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "42px", "fontWeight": "600" }],
+            "display-lg": ["56px", { "lineHeight": "68px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display-md": ["44px", { "lineHeight": "54px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-md-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Top Navigation Header (Docked full-width, shared component execution) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-surface-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-40">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand & Collegiate Seal -->
+<a class="flex items-center gap-3 hover:opacity-90 transition-opacity" href="index.html" title="Back to Aspire College Taunsa Home">
+<img alt="Aspire College Taunsa Official Brand Logo" class="h-10 md:h-12 w-auto object-contain rounded-md" src="assets/images/logo.png"/>
+<div class="hidden sm:block">
+<span class="text-title-lg font-title-lg text-primary dark:text-inverse-primary font-bold tracking-tight block">Aspire College Taunsa</span>
+<span class="text-label-sm font-label-sm text-secondary tracking-wider block">STUDENT &amp; ADMIN PORTAL</span>
+</div>
+</a>
+<!-- Center Dynamic Links (Desktop) -->
+<nav class="hidden lg:flex items-center gap-6">
+<a class="border-b-2 border-primary dark:border-inverse-primary text-primary dark:text-inverse-primary font-title-md text-title-md pb-1 hover:text-primary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-secondary dark:text-secondary-fixed text-title-md font-title-md pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="index.html#about">About Us</a>
+<a class="text-secondary dark:text-secondary-fixed text-title-md font-title-md pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="index.html#academics">Academics</a>
+<a class="text-secondary dark:text-secondary-fixed text-title-md font-title-md pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="index.html#facilities">Facilities</a>
+<a class="text-secondary dark:text-secondary-fixed text-title-md font-title-md pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="index.html#admissions">Admissions</a>
+<a class="text-secondary dark:text-secondary-fixed text-title-md font-title-md pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="index.html#faculty">Faculty</a>
+</nav>
+<!-- Trailing Action Cluster & Portal Switcher -->
+<div class="flex items-center gap-3">
+<!-- Interactive Mode Switcher (Student vs Admin) -->
+<div class="bg-surface-container p-1 rounded-lg flex items-center border border-surface-variant text-label-md font-label-md">
+<button class="px-3 py-1.5 rounded-md font-semibold bg-surface-container-lowest text-primary shadow-sm flex items-center gap-1.5 transition-all duration-150" id="view-student-btn" onclick="switchPortalView('student')">
+<span class="material-symbols-outlined text-[18px]">school</span>
+<span>Student</span>
+</button>
+<button class="px-3 py-1.5 rounded-md font-semibold text-secondary hover:text-on-surface flex items-center gap-1.5 transition-all duration-150" id="view-admin-btn" onclick="switchPortalView('admin')">
+<span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+<span>Admin</span>
+</button>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="hidden sm:flex items-center gap-2 border-l border-surface-variant pl-3">
+<button class="relative p-2 text-secondary hover:text-primary rounded-full hover:bg-surface-container transition-colors" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full ring-2 ring-white"></span>
+</button>
+<button class="p-2 text-secondary hover:text-primary rounded-full hover:bg-surface-container transition-colors" title="Account">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<!-- Trailing CTA Buttons -->
+<a class="hidden md:inline-flex items-center justify-center bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md px-4 py-2 rounded-lg transition-colors shadow-sm" href="#apply">
+          Apply Now
+        </a>
+</div>
+</div>
+</header>
+<!-- Main Body Content Area with Responsive Sidebar Layout -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col lg:flex-row gap-6">
+<!-- Collapsible / Floating Institutional Sidebar -->
+<aside class="w-full lg:w-64 shrink-0 space-y-4">
+<!-- Current User Profile Card -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-title-lg">
+<span id="user-avatar-text">MA</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="font-title-md text-title-md text-on-surface truncate" id="user-display-name">Muhammad Ali</h4>
+<p class="text-label-sm font-label-sm text-secondary truncate" id="user-display-role">Roll # 2023-ICS-089</p>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-secondary">Academic Status</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5"></span> Enrolled
+          </span>
+</div>
+</div>
+<!-- Navigation Links Module -->
+<nav class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 space-y-1 shadow-sm">
+<div class="px-3 py-2 text-label-sm font-label-sm text-secondary uppercase tracking-wider">PORTAL WORKSPACE</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-medium text-body-sm transition-colors" href="#overview">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-medium text-body-sm transition-colors" href="#timetable">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span>Timetable &amp; Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-medium text-body-sm transition-colors" href="#library">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span>Resource Repository</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-medium text-body-sm transition-colors" href="#examinations">
+<span class="material-symbols-outlined text-[20px]">grade</span>
+<span>Board Examination Records</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-medium text-body-sm transition-colors" href="#fee-dues">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Accounts &amp; Fee Challans</span>
+</a>
+<div class="pt-2 border-t border-surface-variant"></div>
+<div class="px-3 py-1.5 text-label-sm font-label-sm text-secondary uppercase tracking-wider">CAMPUS DESK</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low text-body-sm transition-colors" href="#helpline">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+<span>Registrar Office</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low text-body-sm transition-colors" href="#settings">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Security &amp; Preferences</span>
+</a>
+</nav>
+<!-- Campus Emergency / Help Desk Notice -->
+<div class="bg-gradient-to-br from-secondary to-[#142B45] text-surface-container-lowest p-4 rounded-xl shadow-sm">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">info</span>
+<h5 class="font-title-md text-title-md">BISE DG Khan Exam</h5>
+</div>
+<p class="text-body-sm font-body-sm text-secondary-fixed leading-relaxed mb-3">
+          Part-II Roll Number slips released. Ensure all institutional dues are cleared for stamped admit slips.
+        </p>
+<button class="w-full py-1.5 px-3 bg-tertiary-fixed text-on-tertiary-fixed font-semibold text-label-md font-label-md rounded hover:bg-tertiary-fixed-dim transition-colors">
+          Download Admit Slip
+        </button>
+</div>
+</aside>
+<!-- Dynamic Central Canvas: Switchable Views -->
+<div class="flex-1 space-y-6">
+<!-- ============================================== -->
+<!-- 1. STUDENT PORTAL VIEW (Default View) -->
+<!-- ============================================== -->
+<section class="space-y-6 block" id="student-portal-view">
+<!-- Welcome Academic Banner (Hero Style) -->
+<div class="relative overflow-hidden rounded-xl border border-surface-variant bg-surface-container-lowest p-6 shadow-sm">
+<div class="absolute -right-8 -bottom-10 opacity-5 pointer-events-none text-primary">
+<span class="material-symbols-outlined text-[220px]">school</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-label-sm font-label-sm mb-2">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>Session 2023 - 2025 • Shift Morning</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Welcome back, Ali!</h1>
+<p class="text-secondary font-body-md text-body-md mt-1">
+                ICS Part-II (Computer Science &amp; Mathematics) • College Roll No: <strong class="text-on-surface">089-AT</strong>
+</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="bg-surface-container-low px-4 py-2.5 rounded-lg border border-surface-variant text-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase block">College Rank</span>
+<span class="text-headline-sm font-headline-sm text-primary font-bold">#04</span>
+</div>
+<div class="bg-surface-container-low px-4 py-2.5 rounded-lg border border-surface-variant text-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase block">Fee Clearance</span>
+<span class="text-headline-sm font-headline-sm text-emerald-700 font-bold flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Paid
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Academic Metric Cards Grid (Bento Matrix) -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1: Attendance -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Overall Attendance</span>
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface">96.2%</div>
+<p class="text-body-sm font-body-sm text-emerald-600 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> Above min criteria (75%)
+            </p>
+</div>
+<!-- Metric 2: Academic Standing / CGPA -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-[#D6A84F]"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Cumulative Grade</span>
+<span class="material-symbols-outlined text-[#8F6B20] text-[20px]">workspace_premium</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface">88.4%</div>
+<p class="text-body-sm font-body-sm text-secondary mt-1">
+              Grade <strong class="text-on-surface">A-1 Outstanding</strong>
+</p>
+</div>
+<!-- Metric 3: Pending Submissions -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-[#142B45]"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Pending Homework</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">assignment_late</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface">02</div>
+<p class="text-body-sm font-body-sm text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> Physics Practical due Friday
+            </p>
+</div>
+<!-- Metric 4: Board Exam Countdown -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Board Finals In</span>
+<span class="material-symbols-outlined text-primary text-[20px]">alarm</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface">14 <span class="text-body-md font-body-md font-normal text-secondary">Days</span></div>
+<p class="text-body-sm font-body-sm text-secondary mt-1">
+              Annual BISE Exam series 2025
+            </p>
+</div>
+</div>
+<!-- Section 2: Timetable & Campus Schedule -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Timetable Component (2 Cols) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-surface-variant p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Today's Academic Timetable</h3>
+<p class="text-body-sm font-body-sm text-secondary">Campus Block B • Computer Science &amp; General Sciences</p>
+</div>
+<span class="px-2.5 py-1 bg-surface-container text-secondary text-label-sm font-label-sm rounded-md font-semibold">
+                Wednesday Schedule
+              </span>
+</div>
+<div class="space-y-3">
+<!-- Item 1: CS Programming Lab -->
+<div class="p-3.5 rounded-lg border border-surface-variant bg-surface-container-low flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Computer Programming &amp; C++ Practical</h4>
+<p class="text-body-sm font-body-sm text-secondary">Prof. Tariq Mehmood • Advanced Lab 03</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<span class="text-label-md font-label-md px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant text-on-surface">
+                    08:30 AM - 10:00 AM
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-emerald-100 text-emerald-800">
+                    In Session
+                  </span>
+</div>
+</div>
+<!-- Item 2: Physics -->
+<div class="p-3.5 rounded-lg border border-surface-variant bg-surface-container-lowest flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">science</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Physics II: Electromagnetism &amp; Optics</h4>
+<p class="text-body-sm font-body-sm text-secondary">Dr. Sajjad Ahmad • Hall 104</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<span class="text-label-md font-label-md px-2.5 py-1 rounded bg-surface-container-low text-secondary">
+                    10:15 AM - 11:30 AM
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary">
+                    Upcoming
+                  </span>
+</div>
+</div>
+<!-- Item 3: English Composition -->
+<div class="p-3.5 rounded-lg border border-surface-variant bg-surface-container-lowest flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#D6A84F]/20 text-[#8F6B20] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Functional English &amp; Board Comprehension</h4>
+<p class="text-body-sm font-body-sm text-secondary">Ms. Fatima Zahra • Lecture Room 2B</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<span class="text-label-md font-label-md px-2.5 py-1 rounded bg-surface-container-low text-secondary">
+                    11:45 AM - 12:45 PM
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary">
+                    Upcoming
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Institutional Notices & Bulletin (1 Col) -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-5 shadow-sm space-y-4 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Official Bulletin</h3>
+<span class="material-symbols-outlined text-primary text-[20px]">campaign</span>
+</div>
+<div class="divide-y divide-surface-variant mt-2">
+<div class="py-3">
+<span class="text-label-sm font-label-sm text-primary font-bold">12 NOV 2024</span>
+<h5 class="font-title-md text-title-md text-on-surface mt-0.5">Pre-Board Grand Mock Series</h5>
+<p class="text-body-sm font-body-sm text-secondary line-clamp-2 mt-1">
+                    Pre-board examinations commence next Monday. Syllabus checklists uploaded to the repository.
+                  </p>
+</div>
+<div class="py-3">
+<span class="text-label-sm font-label-sm text-secondary font-bold">08 NOV 2024</span>
+<h5 class="font-title-md text-title-md text-on-surface mt-0.5">Taunsa Science &amp; IT Exhibition</h5>
+<p class="text-body-sm font-body-sm text-secondary line-clamp-2 mt-1">
+                    Aspire College Robotics team secured 1st prize in the divisional coding hackathon.
+                  </p>
+</div>
+</div>
+</div>
+<a class="w-full text-center py-2 px-3 border border-secondary text-secondary hover:text-on-surface hover:bg-surface-container rounded-lg text-label-md font-label-md transition-colors block" href="#announcements">
+              View All Campus Notices
+            </a>
+</div>
+</div>
+<!-- Section 3: Study Resources & Digital Notes Library -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-6 shadow-sm space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-variant">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Study Resources &amp; Notes Repository</h3>
+<p class="text-body-sm font-body-sm text-secondary">Verified lecture slides, laboratory manuals, and past five-year board solutions.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase font-semibold">Filter:</span>
+<select class="text-body-sm font-body-sm rounded-lg border-surface-variant bg-surface-container-low py-1.5 px-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option>All Subjects</option>
+<option>Computer Science</option>
+<option>Physics</option>
+<option>Mathematics</option>
+<option>Past Board Papers</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Resource Card 1 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-label-sm font-label-sm font-semibold">ICS Part-II</span>
+<span class="text-label-sm font-label-sm text-secondary">4.2 MB</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-1">C++ Pointers &amp; Data Structures Guide</h4>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Complete module notes with code snippets &amp; diagrams.</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary rounded-lg text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download PDF
+              </button>
+</div>
+<!-- Resource Card 2 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded bg-[#142B45]/10 text-secondary text-label-sm font-label-sm font-semibold">Physics Lab</span>
+<span class="text-label-sm font-label-sm text-secondary">8.9 MB</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-1">Physics Practical Notebook Vol 2</h4>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Standard galvanometer &amp; potentiometer experiments.</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary rounded-lg text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download PDF
+              </button>
+</div>
+<!-- Resource Card 3 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded bg-[#D6A84F]/20 text-[#8F6B20] text-label-sm font-label-sm font-semibold">Board Solved</span>
+<span class="text-label-sm font-label-sm text-secondary">12.1 MB</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-1">BISE DG Khan Past 5-Year Papers</h4>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Mathematics &amp; CS objective + subjective solutions.</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary rounded-lg text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download PDF
+              </button>
+</div>
+<!-- Resource Card 4 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary text-label-sm font-label-sm font-semibold">Calculus</span>
+<span class="text-label-sm font-label-sm text-secondary">3.4 MB</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-1">Integration &amp; Differentiation Formulae</h4>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Quick review cheat sheet created by Prof. Zubair.</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary rounded-lg text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download PDF
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- 2. ADMINISTRATOR DASHBOARD VIEW (Switchable)  -->
+<!-- ============================================== -->
+<section class="space-y-6 hidden" id="admin-portal-view">
+<!-- Admin Management Header & Action Toolbar -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 bg-[#142B45] text-white text-label-sm font-label-sm rounded uppercase tracking-wider">Registrar &amp; Operations</span>
+<span class="text-body-sm font-body-sm text-secondary">Campus ID: ASP-TAUNSA-01</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-1">Collegiate Administration Hub</h1>
+<p class="text-secondary font-body-md text-body-md">Executive control of admissions, student records, faculty allocation, and board reporting.</p>
+</div>
+<!-- Quick Action Toolbar -->
+<div class="flex flex-wrap items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-primary-container shadow-sm transition-all duration-150" onclick="openModal('addProgramModal')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span> Add Program
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#142B45] text-white rounded-lg text-label-md font-label-md hover:opacity-90 transition-all duration-150">
+<span class="material-symbols-outlined text-[18px]">campaign</span> Post Notice
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 border border-surface-variant bg-surface-container text-on-surface rounded-lg text-label-md font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">file_download</span> Export Records
+            </button>
+</div>
+</div>
+<!-- Admin Core Metrics Matrix -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative">
+<div class="flex items-center justify-between text-secondary">
+<span class="text-label-sm font-label-sm uppercase">Total Active Students</span>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface mt-2">1,420</div>
+<div class="text-body-sm font-body-sm text-emerald-600 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +8.4% from Fall 2023
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative">
+<div class="flex items-center justify-between text-secondary">
+<span class="text-label-sm font-label-sm uppercase">New Applications</span>
+<span class="material-symbols-outlined text-[#8F6B20]">assignment_turned_in</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface mt-2">84</div>
+<div class="text-body-sm font-body-sm text-[#8F6B20] mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 19 Require Verification
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative">
+<div class="flex items-center justify-between text-secondary">
+<span class="text-label-sm font-label-sm uppercase">Faculty Members</span>
+<span class="material-symbols-outlined text-secondary">co_present</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface mt-2">52</div>
+<div class="text-body-sm font-body-sm text-secondary mt-1">
+              Across 6 Disciplines
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant shadow-sm relative">
+<div class="flex items-center justify-between text-secondary">
+<span class="text-label-sm font-label-sm uppercase">Active Classrooms</span>
+<span class="material-symbols-outlined text-primary">meeting_room</span>
+</div>
+<div class="text-headline-lg font-headline-lg text-on-surface mt-2">24 / 26</div>
+<div class="text-body-sm font-body-sm text-emerald-600 mt-1">
+              92% Utilization Rate
+            </div>
+</div>
+</div>
+<!-- Admission Inquiries & Review Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden">
+<div class="p-5 border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Admissions &amp; Inquiries Review</h3>
+<p class="text-body-sm font-body-sm text-secondary">Review applicants for Intermediate (F.Sc Pre-Med, Pre-Eng, ICS) and Associate Degrees.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input class="pl-9 pr-4 py-1.5 text-body-sm font-body-sm rounded-lg border border-surface-variant bg-surface-container-low text-on-surface focus:outline-none focus:border-[#142B45]" placeholder="Search applicant name or CNIC..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-secondary text-[18px]">search</span>
+</div>
+</div>
+</div>
+<!-- Academic Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#142B45] text-white text-label-sm font-label-sm uppercase tracking-wider">
+<th class="py-3 px-4">Applicant ID</th>
+<th class="py-3 px-4">Student Name</th>
+<th class="py-3 px-4">Intended Program</th>
+<th class="py-3 px-4">Matric Marks</th>
+<th class="py-3 px-4">Submission Date</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-sm font-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-semibold text-on-surface">APP-2024-912</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">Zainab Bibi</div>
+<div class="text-label-sm text-secondary">Taunsa Sharif City</div>
+</td>
+<td class="py-3 px-4">F.Sc Pre-Medical</td>
+<td class="py-3 px-4 font-semibold text-emerald-700">1042 / 1100 (94.7%)</td>
+<td class="py-3 px-4 text-secondary">Nov 14, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      Approved
+                    </span>
+</td>
+<td class="py-3 px-4 text-right space-x-2">
+<button class="px-2 py-1 bg-surface-container text-secondary hover:text-on-surface rounded text-label-sm font-label-sm font-medium">View Dossier</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-semibold text-on-surface">APP-2024-914</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">Hamza Bilal</div>
+<div class="text-label-sm text-secondary">Kot Qaisrani</div>
+</td>
+<td class="py-3 px-4">ICS (Physics &amp; CS)</td>
+<td class="py-3 px-4 font-semibold text-on-surface">918 / 1100 (83.4%)</td>
+<td class="py-3 px-4 text-secondary">Nov 13, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-amber-50 text-amber-700 border border-amber-200">
+                      Under Review
+                    </span>
+</td>
+<td class="py-3 px-4 text-right space-x-2">
+<button class="px-2 py-1 bg-primary text-on-primary hover:bg-primary-container rounded text-label-sm font-label-sm font-medium">Verify</button>
+<button class="px-2 py-1 bg-surface-container text-secondary hover:text-on-surface rounded text-label-sm font-label-sm font-medium">Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-semibold text-on-surface">APP-2024-918</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">Bilal Hassan</div>
+<div class="text-label-sm text-secondary">Tibbi Qaisrani</div>
+</td>
+<td class="py-3 px-4">F.Sc Pre-Engineering</td>
+<td class="py-3 px-4 font-semibold text-on-surface">845 / 1100 (76.8%)</td>
+<td class="py-3 px-4 text-secondary">Nov 11, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-rose-50 text-rose-700 border border-rose-200">
+                      Pending Docs
+                    </span>
+</td>
+<td class="py-3 px-4 text-right space-x-2">
+<button class="px-2 py-1 bg-surface-container text-secondary hover:text-on-surface rounded text-label-sm font-label-sm font-medium">Request B-Form</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-semibold text-on-surface">APP-2024-922</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">Ayesha Noor</div>
+<div class="text-label-sm text-secondary">Mangrotha Sharif</div>
+</td>
+<td class="py-3 px-4">ADP Computer Science</td>
+<td class="py-3 px-4 font-semibold text-emerald-700">982 / 1100 (89.2%)</td>
+<td class="py-3 px-4 text-secondary">Nov 10, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      Approved
+                    </span>
+</td>
+<td class="py-3 px-4 text-right space-x-2">
+<button class="px-2 py-1 bg-surface-container text-secondary hover:text-on-surface rounded text-label-sm font-label-sm font-medium">Issue Challan</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 border-t border-surface-variant flex items-center justify-between text-body-sm font-body-sm text-secondary bg-surface-container-low">
+<span>Showing 4 of 84 admissions inquiries</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-secondary hover:text-on-surface text-label-sm">Previous</button>
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container text-on-surface font-semibold text-label-sm">1</button>
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-secondary hover:text-on-surface text-label-sm">2</button>
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-secondary hover:text-on-surface text-label-sm">Next</button>
+</div>
+</div>
+</div>
+<!-- Academic Programs Management Matrix -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Registered Academic Programs (2024-25)</h3>
+<p class="text-body-sm font-body-sm text-secondary">Authorized curricula affiliated with BISE DG Khan and Partner Universities.</p>
+</div>
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container text-title-md font-title-md" onclick="openModal('addProgramModal')">
+<span class="material-symbols-outlined text-[18px]">add</span> New Discipline
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Program 1 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase text-secondary">Intermediate</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm">Active</span>
+</div>
+<h4 class="font-title-lg text-title-lg text-on-surface mt-2">ICS (Computer Sciences)</h4>
+<p class="text-body-sm font-body-sm text-secondary mt-1">CS, Mathematics, Statistics / Physics combinations.</p>
+<div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm text-secondary">
+<span>Enrolled: <strong>480</strong></span>
+<span>Seats Left: <strong>20</strong></span>
+</div>
+</div>
+<!-- Program 2 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-[#142B45]"></div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase text-secondary">Intermediate</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm">Active</span>
+</div>
+<h4 class="font-title-lg text-title-lg text-on-surface mt-2">F.Sc Pre-Medical</h4>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Biology, Chemistry, Physics with specialized MDCAT coaching.</p>
+<div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm text-secondary">
+<span>Enrolled: <strong>510</strong></span>
+<span>Seats Left: <strong>14</strong></span>
+</div>
+</div>
+<!-- Program 3 -->
+<div class="p-4 rounded-xl border border-surface-variant bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-[#D6A84F]"></div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase text-secondary">Undergraduate</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm">Active</span>
+</div>
+<h4 class="font-title-lg text-title-lg text-on-surface mt-2">ADP Computer Science</h4>
+<p class="text-body-sm font-body-sm text-secondary mt-1">2-Year Associate Degree program in modern software dev.</p>
+<div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm text-secondary">
+<span>Enrolled: <strong>160</strong></span>
+<span>Seats Left: <strong>40</strong></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Add Program Modal (Administrative Workflow) -->
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" id="addProgramModal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-xl border border-surface-variant shadow-xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="p-5 border-b border-surface-variant flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">add_business</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Add New Academic Program</h3>
+</div>
+<button class="text-secondary hover:text-on-surface p-1" onclick="closeModal('addProgramModal')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-6 space-y-4" onsubmit="handleProgramSubmit(event)">
+<div>
+<label class="block text-label-sm font-label-sm uppercase text-secondary mb-1">Discipline Name</label>
+<input class="w-full text-body-md font-body-md px-3.5 py-2 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest text-on-surface" placeholder="e.g. F.Sc Pre-Engineering or BS Information Technology" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-label-sm font-label-sm uppercase text-secondary mb-1">Category</label>
+<select class="w-full text-body-md font-body-md px-3.5 py-2 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest text-on-surface">
+<option>Intermediate (HSSC)</option>
+<option>Associate Degree (ADP)</option>
+<option>BS 4-Year Degree</option>
+<option>Diploma / Certification</option>
+</select>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm uppercase text-secondary mb-1">Max Seat Capacity</label>
+<input class="w-full text-body-md font-body-md px-3.5 py-2 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest text-on-surface" placeholder="e.g. 60" required="" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm uppercase text-secondary mb-1">Affiliated Body / Board</label>
+<input class="w-full text-body-md font-body-md px-3.5 py-2 rounded-lg border border-surface-variant bg-surface-container-low text-on-surface" readonly="" type="text" value="BISE DERA GHAZI KHAN"/>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm uppercase text-secondary mb-1">Curriculum Brief &amp; Objectives</label>
+<textarea class="w-full text-body-md font-body-md px-3.5 py-2 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest text-on-surface" placeholder="Outline core subjects, laboratory prerequisites, and faculty leads..." rows="3"></textarea>
+</div>
+<div class="pt-3 border-t border-surface-variant flex items-center justify-end gap-3">
+<button class="px-4 py-2 text-label-md font-label-md rounded-lg border border-surface-variant text-secondary hover:text-on-surface" onclick="closeModal('addProgramModal')" type="button">
+            Cancel
+          </button>
+<button class="px-5 py-2 text-label-md font-label-md rounded-lg bg-primary text-on-primary hover:bg-primary-container font-semibold transition-colors" type="submit">
+            Save Program
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Shared Footer Component -->
+<footer class="bg-secondary dark:bg-inverse-surface border-t border-secondary-fixed-dim dark:border-outline text-surface-container-lowest dark:text-inverse-on-surface w-full py-12 px-6 max-w-7xl mx-auto mt-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<!-- Col 1: Brand & Identity -->
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<img alt="Aspire College Taunsa Official Brand Logo" class="h-8 w-auto brightness-0 invert" src="assets/images/logo.png"/>
+<span class="text-headline-sm font-headline-lg text-surface-container-lowest font-bold tracking-wide">Aspire College</span>
+</div>
+<p class="text-secondary-fixed text-body-sm font-body-sm leading-relaxed">
+          Aspire College Taunsa Campus is dedicated to academic excellence, state-of-the-art laboratory education, and exemplary moral grooming in South Punjab.
+        </p>
+</div>
+<!-- Col 2: Institutional Links -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-surface-container-lowest mb-3">Academic Links</h4>
+<ul class="space-y-2 text-secondary-fixed text-body-sm font-body-sm">
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="index.html#admissions">Admissions</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="#programs">Academic Programs</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="index.html#facilities">Campus Facilities</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="#portal">Student Portal</a></li>
+</ul>
+</div>
+<!-- Col 3: Campus Support -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-surface-container-lowest mb-3">Governance &amp; Staff</h4>
+<ul class="space-y-2 text-secondary-fixed text-body-sm font-body-sm">
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="index.html#faculty">Faculty Directory</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="#research">Research &amp; Resources</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="#news">Campus News</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors duration-200" href="#privacy">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Col 4: Contact Taunsa Campus -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-surface-container-lowest mb-3">Contact Us</h4>
+<p class="text-secondary-fixed text-body-sm font-body-sm mb-2">
+          Indus Highway, Near Main Bypass, Taunsa Sharif, Punjab, Pakistan
+        </p>
+<p class="text-secondary-fixed text-body-sm font-body-sm">
+          Email: info@aspiretaunsa.edu.pk<br/>
+          Helpline: +92 64 2601900
+        </p>
+</div>
+</div>
+<div class="pt-6 border-t border-secondary-fixed-dim/20 flex flex-col sm:flex-row items-center justify-between text-label-sm font-label-sm text-secondary-fixed">
+<p>© 2024 Aspire College Taunsa. All rights reserved. Empowering academic excellence.</p>
+<div class="flex gap-4 mt-3 sm:mt-0">
+<a class="hover:text-surface-container-lowest transition-colors" href="#terms">Affiliated with BISE DG Khan</a>
+<span>•</span>
+<a class="hover:text-surface-container-lowest transition-colors" href="#portal-terms">Portal Usage Terms</a>
+</div>
+</div>
+</footer>
+<!-- Micro-Interactions & View Switching Scripts -->
+<script>
+    function switchPortalView(view) {
+      const studentSection = document.getElementById('student-portal-view');
+      const adminSection = document.getElementById('admin-portal-view');
+      const studentBtn = document.getElementById('view-student-btn');
+      const adminBtn = document.getElementById('view-admin-btn');
+      const userName = document.getElementById('user-display-name');
+      const userRole = document.getElementById('user-display-role');
+      const userAvatar = document.getElementById('user-avatar-text');
+
+      if (view === 'student') {
+        studentSection.classList.remove('hidden');
+        studentSection.classList.add('block');
+        adminSection.classList.add('hidden');
+        adminSection.classList.remove('block');
+
+        // Style Button Toggles
+        studentBtn.className = 'px-3 py-1.5 rounded-md font-semibold bg-surface-container-lowest text-primary shadow-sm flex items-center gap-1.5 transition-all duration-150';
+        adminBtn.className = 'px-3 py-1.5 rounded-md font-semibold text-secondary hover:text-on-surface flex items-center gap-1.5 transition-all duration-150';
+
+        // Update User Profile Card
+        userName.textContent = 'Muhammad Ali';
+        userRole.textContent = 'Roll # 2023-ICS-089';
+        userAvatar.textContent = 'MA';
+      } else {
+        adminSection.classList.remove('hidden');
+        adminSection.classList.add('block');
+        studentSection.classList.add('hidden');
+        studentSection.classList.remove('block');
+
+        // Style Button Toggles
+        adminBtn.className = 'px-3 py-1.5 rounded-md font-semibold bg-surface-container-lowest text-primary shadow-sm flex items-center gap-1.5 transition-all duration-150';
+        studentBtn.className = 'px-3 py-1.5 rounded-md font-semibold text-secondary hover:text-on-surface flex items-center gap-1.5 transition-all duration-150';
+
+        // Update User Profile Card
+        userName.textContent = 'Prof. Junaid Khan';
+        userRole.textContent = 'Academic Administrator';
+        userAvatar.textContent = 'JK';
+      }
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function handleProgramSubmit(e) {
+      e.preventDefault();
+      alert('Academic Program recorded successfully into the College Catalog.');
+      closeModal('addProgramModal');
+    }
+  </script>
+</body></html>

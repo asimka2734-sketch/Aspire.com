@@ -1,0 +1,12 @@
+{
+  "name": "aspire-college-taunsa-website",
+  "version": "1.0.0",
+  "description": "Aspire College Taunsa Official Website and Student/Admin Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["aspire-college", "taunsa", "portal", "website"],
+  "author": "",
+  "license": "ISC"
+}
